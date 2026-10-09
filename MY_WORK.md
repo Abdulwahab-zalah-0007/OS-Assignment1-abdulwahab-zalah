@@ -234,6 +234,18 @@
 
 ---
 
+## Development Log Summary
+
+**Total time spent on assignment**: [X hours]
+
+**Most challenging part**:
+
+**Most interesting learning**:
+
+**What I would do differently next time**:
+
+---
+
 # Part B: Reflection (0.5 mark)
 
 > 🛑 **STOP:** Do **not** start this part until you have read the `README.md`, read the **entire** `SchedulerSimulation.java`, run it, and finished the three features.
