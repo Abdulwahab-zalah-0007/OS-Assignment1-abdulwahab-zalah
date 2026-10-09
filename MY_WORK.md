@@ -26,6 +26,7 @@
 ## 👤 Student Information
 
 > ⚠️ **WARNING:** Fill this in first. Your name and ID must match the student ID you set in `SchedulerSimulation.java` (line 150) and the one you say in your video.
+
 | Field | Your Answer |
 |-------|-------------|
 | **Full Name** | Abdulwahab Zalah |
