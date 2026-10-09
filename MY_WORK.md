@@ -129,95 +129,108 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - October 9, 2026, 4:59 AM
+**What I did**: I forked the starter repo and put my student ID.
 
 **Details**:
+- Forked `makopt/OS-Assignment1-Starter-481` and changed the name to `OS-Assignment1-abdulwahab-zalah`
+- Checked that the repo is public
+- Changed `studentID` in line 150 of `SchedulerSimulation.java` to my ID (445050007)
+- Committed from GitHub website: `Set my student ID: 445050007`
 
-**Challenges**:
+**Challenges**: No big problems in this part.
 
-**Solution**:
+**Solution**: Nothing needed.
 
-**Time spent**:
+**Time spent**: 15 minutes
 
 ---
 
-### Entry 2 - [Date and Time]
-**What I did**:
+### Entry 2 - October 9, 2026, 5:36 AM
+**What I did**: I set up VS Code and ran the simulation the first time.
 
 **Details**:
+- Connected VS Code with my GitHub account and installed the Java extensions
+- Set `git config` with my name and my university email
+- Cloned my repo and ran `SchedulerSimulation.java` with the Run button
+- First output showed 12 processes and time quantum 3000ms
 
-**Challenges**:
+**Challenges**: The command `java -version` was not recognized because I did not have JDK, and VS Code showed error "Java Language Server client: couldn't create connection to server" at 5:36 AM.
 
-**Solution**:
+**Solution**: I installed JDK 21 (Eclipse Temurin) and restarted VS Code. After that the Java extension worked and the program ran.
 
-**Time spent**:
+**Time spent**: 1 hour
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 3 - October 9, 2026, 7:23 AM
+**What I did**: I did Feature 1, the process priority.
 
 **Details**:
+- Added `priority` field in the `Process` class
+- Gave it random number from 1 to 10 in the constructor with `new Random().nextInt(10) + 1`
+- Added `getPriority()` and printed the priority in `addProcessToQueue()`
+- Checked that the queue is still FIFO
+- Committed at 7:23 AM: `Feature 1: Added priority field to Process class`
 
-**Challenges**:
+**Challenges**: I got a lot of compile errors because the closing bracket `}` of the constructor was in the wrong place. Also I copied one `System.out.println` line two times by mistake.
 
-**Solution**:
+**Solution**: I moved the `}` to after the priority line, deleted the extra line, and ran again to see the priority printed for all processes.
 
-**Time spent**:
+**Time spent**: 40 minutes
 
 ---
 
-### Entry 4 - [Date and Time]
-**What I did**:
+### Entry 4 - October 9, 2026, 8:06 PM
+**What I did**: I did Feature 2, the context switch counter.
 
 **Details**:
+- Added `static int contextSwitches = 0;` in the `SchedulerSimulation` class
+- Added `contextSwitches++` in the scheduler loop before `currentThread.start()`
+- Printed `Total context switches` after the "ALL PROCESSES COMPLETED" message
+- I counted the executions by hand from my output and got 24, same as the program
+- Committed at 8:06 PM: `Feature 2: Implemented context switch counter`
 
-**Challenges**:
+**Challenges**: First I put the static variable inside `main` and got around 50 compile errors.
 
-**Solution**:
+**Solution**: I moved it to the class level above `main`, because static variable can not be inside a method.
 
-**Time spent**:
+**Time spent**: 35 minutes
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 5 - October 9, 2026, 9:15 PM
+**What I did**: I did Feature 3, the waiting time tracking and the summary table.
 
 **Details**:
+- Added `creationTime` and `completionTime` to `Process` using `System.currentTimeMillis()`
+- Added `markCompleted()`, `getTurnaroundTime()` and `getWaitingTime()`
+- Saved the finished processes in a list `finishedProcesses` and called `markCompleted()` when process finish
+- Printed a table with process name, burst time, waiting time and turnaround time
+- Checked that turnaround = waiting + burst in every row (example P1: 24 + 1528 = 1552)
+- Committed at 9:15 PM: `Feature 3: Added waiting time tracking and summary table`
 
-**Challenges**:
+**Challenges**: A process can finish in two places in the loop (after its quantum, or from `runToCompletion()`), so I was not sure where to save the completion time.
 
-**Solution**:
+**Solution**: I added one check after both cases: if `process.isFinished()`, save the completion time and add it to the list.
 
-**Time spent**:
+**Time spent**: 1 hour
 
 ---
 
-### Entry 6 - [Optional - Date and Time]
-**What I did**:
+### Entry 6 - October 9, 2026, 10:46 PM
+**What I did**: I started writing my documentation in `MY_WORK.md`.
 
 **Details**:
+- Filled the Student Information table (name, ID, university email, GitHub username, repo link)
+- Committed at 10:41 PM: `Docs: Fill student information in MY_WORK.md`
+- Fixed the space before the table and committed at 10:46 PM: `Docs: Fix table spacing`
 
-**Challenges**:
+**Challenges**: VS Code put `> -` automatically in an empty line and it can break the table. Also a file `image.png` appeared in my project folder by mistake.
 
-**Solution**:
+**Solution**: I cleared the line until it is fully empty and deleted `image.png` so it is not committed.
 
-**Time spent**:
-
----
-
-## Development Log Summary
-
-> 💡 **TIP:** Fill this in **last**, after all entries are written.
-
-**Total time spent on assignment**: [X hours]
-
-**Most challenging part**:
-
-**Most interesting learning**:
-
-**What I would do differently next time**:
+**Time spent**: 30 minutes
 
 ---
 
