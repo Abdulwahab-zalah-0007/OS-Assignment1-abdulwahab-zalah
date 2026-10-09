@@ -26,14 +26,13 @@
 ## 👤 Student Information
 
 > ⚠️ **WARNING:** Fill this in first. Your name and ID must match the student ID you set in `SchedulerSimulation.java` (line 150) and the one you say in your video.
-
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | Abdulwahab Zalah |
+| **Student ID** | 445050007 |
+| **University Email** | 445050007@std.psau.edu.sa |
+| **GitHub Username** | Abdulwahab-zalah-0007 |
+| **Repository Link** | https://github.com/Abdulwahab-zalah-0007/OS-Assignment1-abdulwahab-zalah |
  
 ---
 
