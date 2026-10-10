@@ -340,7 +340,7 @@ The assignment was helpful and I learned a lot about threads and Git. My suggest
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+A process is an independent program with its own memory, but a thread is a smaller part inside a process and all the threads share the same memory. Creating a thread is also faster and cheaper than creating a new process, and threads can communicate just by using shared variables. In my code, the `Process` class is only a simulated process, and it is run by a real Java thread using `Thread thread = new Thread(process);` inside `addProcessToQueue()`. We used threads because the scheduler needs to share `processQueue`, `processMap` and `contextSwitches` easily. With separate processes this would be slower and would need special communication between them.
 
 ## Question 2: Ready Queue Behavior
 
@@ -352,15 +352,32 @@ The assignment was helpful and I learned a lot about threads and Git. My suggest
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+When a process doesn't finish in its time quantum, it stops, yields the CPU for a context switch, and goes to the end of the ready queue. In my output P5 has a burst time of 6060ms, so it ran 3000ms and had 3060ms remaining, then it was added back to the queue. Later it ran another 3000ms and had 60ms remaining, so it was added again, and then it finished with its last 60ms. This means P5 was re-queued 2 times before it finished. Re-queueing is important for fairness because no process keeps the CPU for too long and every process gets its turn.
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+P5 executing quantum [3000ms]
+P5 completed quantum 3000ms | Overall progress: 49%
+   Remaining time: 3060ms
+P5 yields CPU for context switch
+
+P5 added to ready queue | Burst time: 6060ms | Priority: 7
+[P7 -> P8 -> P9 -> P10 -> P11 -> P12 -> P2 -> P3 -> P4 -> P5]
+
+P5 executing quantum [3000ms]
+P5 completed quantum 3000ms | Overall progress: 99%
+   Remaining time: 60ms
+P5 yields CPU for context switch
+
+P5 added to ready queue | Burst time: 6060ms | Priority: 7
+[P8 -> P9 -> P10 -> P11 -> P12 -> P5]
+
+P5 executing quantum [60ms]
+P5 finished execution!
 ```
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+In the first part, P5 used the full 3000ms quantum and still had 3060ms left, so it was put at the end of the queue (after P4). In the second part it used another 3000ms and had only 60ms left, so it went to the end again, behind P12. After that it ran for 60ms and finished, so it was re-queued 2 times in total.
 
 ## Question 3: Thread Lifecycle
 
@@ -370,15 +387,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: P1 is in the New state when its thread is created with `Thread thread = new Thread(process);` in `addProcessToQueue()`, but it did not start yet.
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: P1 becomes Runnable after `currentThread.start()` is called in the scheduler loop, so it is ready and waiting for the CPU.
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: P1 is Running when it gets the CPU and executes the code inside its `run()` method for 1528ms.
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: P1's thread sleeps inside `run()` with `Thread.sleep()` to simulate the work, and the main thread waits for it with `currentThread.join()`.
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: P1 is Terminated when `run()` ends after 1528ms, and then `join()` returns and the main thread continues.
 
 ## Question 4: Real-World Applications
 
@@ -388,32 +405,32 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): CPU sharing between open programs
 
 **Description**:
-[Describe the real-world scenario.]
+On a normal computer, the OS scheduler shares the CPU between programs that are open at the same time, like a browser, a music player and Word. Each program is like a process in my simulation, the time quantum is the small time slice each program gets, and the context switch happens when the OS moves to the next program.
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+It is fair because every program gets a turn on the CPU. It is also responsive because no program freezes while another one runs for a long time, and it is predictable because each program waits only a limited time for its next turn.
 
-### Example 2: [Name of application/scenario]
+### Example 2: Game server with many players
 
 **Description**:
-[Describe the real-world scenario or application.]
+A game server receives requests from many players at the same time, like moving, chatting or shooting. Each request is like a process handled by a thread, and the time quantum is the short time slice the server gives to each request before moving to the next one.
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+A heavy request cannot block the other players for a long time, so everyone feels a fast response. It is also fair because every player gets served in turn, and nobody waits forever.
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1. A thread shares memory with other threads, but a process has its own memory, so threads are faster and easier for this simulation.
+2. In Round-Robin, a process runs for one time quantum, and if it doesn't finish it goes to the end of the ready queue (like P5, which was re-queued 2 times).
+3. `start()` begins the thread, `sleep()` simulates the work, and `join()` makes the main thread wait until the thread finishes.
 
 **Concepts I need to study more:**
-1.
-2.
+1. Thread synchronization, for example when two threads change the same variable.
+2. Other scheduling algorithms like Priority Scheduling, because I added a priority but it is not used in the scheduling yet.
 
 ---
 
