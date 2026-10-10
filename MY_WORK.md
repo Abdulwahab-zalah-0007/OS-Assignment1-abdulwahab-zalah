@@ -262,7 +262,14 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+I learned that the Process class implements Runnable, so every process runs inside a new Thread(process).
+In the time that the scheduler call start(), the thread start and Java calls the run() method.
+Inside run(), I use Thread.sleep() to represent the time that the process uses the CPU.
+The main thread calls join() to wait until the current quantum finish, and without it there is no order for process.
+In my output, I saw P2 run for 3000ms, then back to the queue, and then run again for 402ms.
+I also see P5 go back to the ready queue twice before it finish.
+What surprised me is that a thread can not choose the time it starts, because the scheduler handle the order.
+
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -270,7 +277,8 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+The hardest part for me was Feature 3, which is tracking the waiting time. It was difficult because a process can finish in two different places in the scheduler loop. At first, I did not know where to save the finish time because some processes might not appear in the table. I fixed this by checking if `process.isFinished()` in both cases and then calling `markCompleted()` and adding the process to the list. After that, I checked the numbers to make sure the turnaround time equals the waiting time plus the burst time. For example, P1 has 24 + 1528 = 1552. I learned that checking the results helps me find mistakes in my code.
+
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -278,7 +286,14 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+I overcame the challenges by reading the error messages in VS Code carefully and checking the line number of each error.
+For example, when I got around 50 errors in Feature 2, I understood that a static variable can not be inside the main method, so I moved it above main.
+In Feature 1, I fixed the wrong place of the closing bracket `}` and deleted the line that I copied by mistake.
+I also tested the program after each feature, before I committed it, so I could find the problem early.
+To be sure about Feature 2, I counted the executions in my output by hand and I got 24, the same as the program.
+I made a separate commit for each feature, so my work was organized and easy to follow.
+This way of working, small steps and testing every time, helped me finish the assignment without big problems.
+
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -286,21 +301,28 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Multithreading is used in many real applications that I use every day.
+For example, a Brave web browser can load many pages and downloads at the same time using threads, so a slow page does not freeze the other tabs.
+In a Spotify music player, one thread plays the audio and another thread handles the buttons, so the music does not stop when I press something.
+Mobile games like Marvel Snap also use threads for drawing the screen, game logic, and the network at the same time.
+In my assignment, each Process is like one of these tasks, and it runs inside its own Thread.
+The time quantum of 3000ms is like the time slice that the system gives to each task, and the context switch happens when the scheduler changes to the next one.
+This is similar to what my output showed, because every process got a turn and no process took the CPU for all the time.
 
 ### Optional: What would you like to learn more about?
 
-[Any topics related to threading or operating systems that you're curious about?]
+nothing
 
 ### Optional: How confident do you feel about multithreading concepts now?
 
-[Beginner / Intermediate / Confident. What do you understand well? What needs more practice?]
+
+Confident. I understand threads, start(), join(), sleep() and Round-Robin. I need more practice with synchronization.
+
 
 ### Optional: Feedback on the assignment
 
-[Any comments? Was it helpful? Too easy or hard? Suggestions?]
+The assignment was helpful and I learned a lot about threads and Git. My suggestion is to make the deadline more open, because not every student has the same free time, and the work needs a different number of hours for each student. More time can help students understand the code better, not only finish it fast.
 
----
 
 # Part C: Technical Answers (0.5 mark)
 
