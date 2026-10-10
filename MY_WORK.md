@@ -230,19 +230,55 @@ channel name wbsec on youtube
 
 **Solution**: I cleared the line until it is fully empty and deleted `image.png` so it is not committed.
 
-**Time spent**: 30 minutes
+**Time spent**: 30 minutes 
+
+---
+
+### Entry 7 - October 10, 2026, 9:47 PM
+**What I did**: I wrote the Reflection (Part B) and the Technical Answers (Part C) in `MY_WORK.md`.
+
+**Details**:
+- Wrote the four reflection questions and the optional sections
+- Used my own output (P5 re-queued 2 times) for the Ready Queue question
+- Followed P1 through the thread states (New, Runnable, Running, Waiting, Terminated)
+- Wrote the two real-world examples and the summary
+- Committed at 8:56 PM: `Docs: Completed reflection (Part B)`
+- Committed at 9:47 PM: `Docs: Completed technical answers (Part C)`
+
+**Challenges**: I was confused about who is in the Waiting state, the main thread or the thread of P1, and about the 3 to 5 sentences limit.
+
+**Solution**: I read the code again. P1's thread sleeps in `Thread.sleep()`, and the main thread waits in `join()`. I also counted the sentences in each answer.
+
+**Time spent**: 2 hours
+
+---
+
+### Entry 8 - October 10, 2026, 11:02 PM
+**What I did**: I recorded the demo video and uploaded it to YouTube.
+
+**Details**:
+- Recorded the screen with OBS: repository, university email, the three features in the code, the run in VS Code, and the commit history
+- Explained `Runnable`, `start()`, `sleep()` and `join()` while the program was running
+- Uploaded the video to YouTube and tested the link in an incognito window
+- Added the link to this file and committed at 11:02 PM: `Docs: Added demo video link`
+
+**Challenges**: The program takes about 55 seconds to run, so I had to keep talking during the run to stay inside 2 to 3 minutes. Also some extra text was pasted with the YouTube link in my file.
+
+**Solution**: I explained the threading concept during the run, then showed the context switches and the summary table at the end. I deleted the extra text and kept only the link.
+
+**Time spent**: 45 minutes
 
 ---
 
 ## Development Log Summary
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: About 7 hours
 
-**Most challenging part**:
+**Most challenging part**: Feature 3, because a process can finish in two places in the scheduler loop.
 
-**Most interesting learning**:
+**Most interesting learning**: How `start()`, `sleep()` and `join()` work together, and how a process goes back to the ready queue in Round-Robin.
 
-**What I would do differently next time**:
+**What I would do differently next time**: I would start the documentation earlier and write the log after each session, not at the end.
 
 ---
 
